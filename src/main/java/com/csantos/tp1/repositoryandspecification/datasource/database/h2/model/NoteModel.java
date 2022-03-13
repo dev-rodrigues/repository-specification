@@ -1,5 +1,7 @@
 package com.csantos.tp1.repositoryandspecification.datasource.database.h2.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,14 @@ public class NoteModel {
     private Long id;
 
     private String text;
+
+    private DateTime createdAt;
+
+    private DateTime updatedAt;
+
+    public boolean estaAtivo() {
+        return createdAt.isBeforeNow() && updatedAt == null;
+    }
 
     public Long getId() {
         return id;
